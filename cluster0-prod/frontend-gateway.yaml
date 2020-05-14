@@ -1,0 +1,25 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: frontend-gateway
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "boutique.c0.kube8.ga"
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    hosts:
+    - "boutique.c0.kube8.ga"
+    tls:
+      credentialName: boutique-cert
+      mode: SIMPLE
+      privateKey: sds
+      serverCertificate: sds

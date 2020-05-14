@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: boutique-beta-cert
+  namespace: istio-system
+spec:
+  secretName: boutique-beta-cert
+  dnsNames:
+    - "beta.boutique.c0.kube8.ga"
+  issuerRef:
+    name: cloudflare-issuer
+    kind: ClusterIssuer
+  commonName: "beta.boutique.c0.kube8.ga"
